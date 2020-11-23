@@ -30,7 +30,7 @@ export default {
   flex-direction: column;
 }
 
-.main-section {
+#main-section {
   display: flex;
   margin-top: 50px;
 }

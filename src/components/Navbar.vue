@@ -14,13 +14,6 @@ export default {};
 </script>
 
 <style lang="scss" scoped>
-:root {
-  $primaryColor: #c81912;
-  $secondaryColor: #f64b3c;
-  $terniaryColor: #fdba9a;
-  $textColor: white;
-  $pseudoColor: #42240c;
-}
 #navbar-wrap {
   position: fixed;
   width: 100%;

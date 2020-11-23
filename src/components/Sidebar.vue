@@ -19,6 +19,7 @@ export default {
   flex-direction: column;
   padding: 10px;
   min-height: 100vh;
+  min-width: 150px;
   max-width: 150px;
   flex-grow: 1;
   background-color: white;
@@ -28,6 +29,7 @@ export default {
     margin-top: 20px;
     height: 30px;
     background-color: #f64b3c;
+    color: white;
     border: none;
     text-transform: uppercase;
     font-weight: 600;
@@ -38,7 +40,7 @@ export default {
 
   #movie-form {
     display: flex;
-    flex-direction: coloumn;
+    flex-direction: column;
     text-align: left;
 
     & > div {
@@ -50,21 +52,23 @@ export default {
         justify-content: space-between;
       }
     }
+
     .add-actor {
-      background-color: #fdba9a;
+      background-color: green;
       text-align: center;
       color: white;
       margin-left: 5px;
       height: 100%;
       padding: 2px 10px;
       font-size: 20px;
-      padding: 1rem;
+      padding: 1re;
       align-self: center;
       cursor: pointer;
     }
   }
+
   #add-movie {
-    background-color: #333;
+    background-color: #5eb85e;
     border: none;
     padding: 5px;
     width: 70px;
