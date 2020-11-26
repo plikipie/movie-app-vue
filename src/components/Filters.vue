@@ -40,7 +40,7 @@ export default {
     };
   },
   methods: {
-    applyFilter(fiter) {
+    applyFilter(filter) {
       this.$store.dispatch("filter", filter);
     },
   },

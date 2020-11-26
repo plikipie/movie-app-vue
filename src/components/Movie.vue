@@ -1,6 +1,6 @@
 <template>
   <div class="movie">
-    <img :src="movie.poster" alt="movie.name" />
+    <img :src="movie.poster" alt="movie.name" @click="openDetails" />
     <div class="description">
       <div class="basic-info">
         <h3>{{ movie.name }}</h3>
@@ -29,6 +29,12 @@ export default {
       if (this.movie.ratig > 4) return "#f64b3c";
 
       return "#fdba9a";
+    },
+    openDetails() {
+      this.$router.push({
+        name: "moviePreview",
+        params: { id: this.movie.id },
+      });
     },
   },
 };
