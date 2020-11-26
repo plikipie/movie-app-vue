@@ -1,6 +1,6 @@
 <template>
   <div class="movie">
-    <img src="movie.poster" alt="movie.name" />
+    <img :src="movie.poster" alt="movie.name" />
     <div class="description">
       <div class="basic-info">
         <h3>{{ movie.name }}</h3>
