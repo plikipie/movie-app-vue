@@ -1,17 +1,20 @@
 <template>
   <transition name="modal">
     <div class="modal-mask" @click="closeModal">
-      <div class="modal-wraper">
+      <div class="modal-wrapper">
         <div class="modal-container">
-          <div class="modal-hear">
+          <div class="modal-header">
             <slot name="header"></slot>
           </div>
+
           <div class="modal-body">
             <slot name="body"></slot>
           </div>
+
           <div class="modal-footer">
+            <button @click="$emit('close')">Close</button>
             <slot name="footer">
-              <div>OKE</div>
+              <div></div>
             </slot>
           </div>
         </div>
@@ -94,7 +97,7 @@ export default {
         button {
           background-color: #e10505;
           border: none;
-          padding: 5px;
+          padding: 10px;
           width: 70px;
           color: white;
           border-radius: 10px;

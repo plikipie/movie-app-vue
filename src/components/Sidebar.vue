@@ -1,14 +1,93 @@
 <template>
   <div id="sidebar">
     <filters />
-    <button @click="showModal = true">Add Movie</button>
+    <button @click="showModal = true">Add movie</button>
 
-    <modal v-if="showModal" @close="showModal = !showModal" />
+    <modal v-if="showModal" @close="showModal = !showModal">
+      <template v-slot:header>
+        <h3 class="m-0">Create new movie</h3>
+      </template>
+      <template v-slot:body>
+        <form @submit.prevent="addMovie" ref="movieForm" id="movie-form">
+          <p>Fill out the details bellow</p>
+          <input required v-model="form.name" type="text" placeholder="Name" />
+          <input
+            required
+            v-model="form.year"
+            type="number"
+            placeholder="Year"
+          />
+          <input
+            required
+            v-model="form.rating"
+            type="number"
+            placeholder="Rating"
+          />
+          <input
+            required
+            v-model="form.genre"
+            type="text"
+            placeholder="Genre"
+          />
+          <input
+            required
+            v-model="form.budget"
+            type="text"
+            placeholder="Budget"
+          />
+          <input
+            required
+            v-model="form.boxOffice"
+            type="text"
+            placeholder="Box Office"
+          />
+          <input
+            required
+            v-model="form.poster"
+            type="text"
+            placeholder="Poster"
+          />
+          <hr />
+          <div>
+            <div id="actor-input">
+              <p class="m-0">Actors</p>
+              <span @click="addActor" class="add-actor">+</span>
+            </div>
+
+            <input
+              required
+              v-for="(actor, index) in form.actors"
+              :key="index"
+              v-model="form.actors[index].name"
+              type="text"
+              placeholder="Actor"
+            />
+          </div>
+
+          <hr />
+
+          <textarea
+            required
+            v-model="form.storyline"
+            placeholder="Storyline"
+            rows="6"
+          />
+          <hr />
+        </form>
+      </template>
+      <template v-slot:footer>
+        <button id="add-movie" @click="$refs.movieForm.requestSubmit()">
+          Add
+        </button>
+      </template>
+    </modal>
   </div>
 </template>
+
 <script>
 import Filters from "./Filters";
-import Modal from "./Modal.vue";
+import Modal from "./Modal";
+
 export default {
   components: {
     Filters,
@@ -30,8 +109,20 @@ export default {
       },
     };
   },
+  methods: {
+    addActor() {
+      this.form.actors.push({ name: "" });
+    },
+    addMovie(e) {
+      e.preventDefault();
+
+      this.$store.dispatch("addMovie", this.form);
+      this.showModal = false;
+    },
+  },
 };
 </script>
+
 <style lang="scss" scoped>
 #sidebar {
   display: flex;
@@ -41,7 +132,7 @@ export default {
   min-width: 150px;
   max-width: 150px;
   flex-grow: 1;
-  background-color: white;
+  background-color: #222831;
   justify-content: left;
 
   & > button {
@@ -73,7 +164,7 @@ export default {
     }
 
     .add-actor {
-      background-color: green;
+      background-color: #f64b3c;
       text-align: center;
       color: white;
       margin-left: 5px;
@@ -87,7 +178,7 @@ export default {
   }
 
   #add-movie {
-    background-color: #5eb85e;
+    background-color: #f64b3c;
     border: none;
     padding: 5px;
     width: 70px;
@@ -99,3 +190,4 @@ export default {
   }
 }
 </style>
+``

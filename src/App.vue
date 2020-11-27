@@ -4,7 +4,7 @@
 
 <style lang="scss">
 body {
-  background-color: #222b31;
+  background-color: #393e46;
   margin: 0;
 }
 

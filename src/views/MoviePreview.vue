@@ -103,7 +103,7 @@ export default {
       }
 
       h3 {
-        color: rgb(143, 143, 143);
+        color: whitesmoke;
 
         #movie-rating {
           display: flex;
