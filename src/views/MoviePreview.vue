@@ -31,7 +31,7 @@
         </div>
         <div id="options">
           <button class="edit">Edit</button>
-          <button class="delete">Delete</button>
+          <button @click="deleteMovie" class="delete">Delete</button>
         </div>
       </div>
     </div>
@@ -58,7 +58,12 @@ export default {
       movie: {},
     };
   },
-
+  methods: {
+    deleteMovie() {
+      this.$store.dispatch("deleteMovie", parseInt(this.id));
+      this.$router.push("/");
+    },
+  },
   created() {
     this.movie = this.$store.getters.getMovieById(parseInt(this.id));
   },
