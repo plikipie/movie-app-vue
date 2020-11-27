@@ -117,6 +117,7 @@ export default {
       e.preventDefault();
 
       this.$store.dispatch("addMovie", this.form);
+
       this.showModal = false;
     },
   },
