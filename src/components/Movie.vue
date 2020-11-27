@@ -15,7 +15,10 @@
 </template>
 
 <script>
+import ratingMixin from "../mixins/getRatingColor.js";
+
 export default {
+  mixins: [ratingMixin],
   props: {
     movie: {
       type: Object,
@@ -23,13 +26,6 @@ export default {
     },
   },
   methods: {
-    getRatingColor() {
-      if (this.movie.rating > 7) return "#c81912";
-
-      if (this.movie.ratig > 4) return "#f64b3c";
-
-      return "#fdba9a";
-    },
     openDetails() {
       this.$router.push({
         name: "moviePreview",

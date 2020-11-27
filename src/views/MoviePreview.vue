@@ -11,11 +11,15 @@
       <div id="movie-info">
         <div>
           <h1>{{ movie.name }}</h1>
-          <h3>{{ movie.year }}</h3>
-          <h3>{{ movie.genre }}</h3>
-          <h3>Rating : {{ movie.rating }}/10</h3>
+          <h3>Year : {{ movie.year }}</h3>
+          <h3>Genre : {{ movie.genre }}</h3>
+          <span
+            id="movie-rating"
+            :style="{ 'background-color': getRatingColor() }"
+            >Rating : {{ movie.rating }}</span
+          >
           <h3>Budget : {{ movie.budget }}</h3>
-          <h3>Box Office :{{ movie.boxOffice }}</h3>
+          <h3>Box Office : {{ movie.boxOffice }}</h3>
           <h3>
             Actors :
             <span v-for="(actor, index) in movie.actors" :key="index">{{
@@ -36,7 +40,9 @@
 
 <script>
 import Navbar from "../components/Navbar.vue";
+import ratingMixin from "../mixins/getRatingColor.js";
 export default {
+  mixins: [ratingMixin],
   components: {
     Navbar,
   },
@@ -47,13 +53,12 @@ export default {
       default: null,
     },
   },
-  methods: {
-    data() {
-      return {
-        movie: {},
-      };
-    },
+  data() {
+    return {
+      movie: {},
+    };
   },
+
   created() {
     this.movie = this.$store.getters.getMovieById(parseInt(this.id));
   },
